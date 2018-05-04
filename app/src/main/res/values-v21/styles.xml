@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/grad_end</item>
+        <item name="colorPrimaryDark">@color/grad_start</item>
+        <item name="colorAccent">@color/dark_blue</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">#00000000</item>
+        <item name="android:fontFamily">@font/dinpro_medium</item>
+    </style>
+</resources>
