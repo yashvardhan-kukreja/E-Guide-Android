@@ -19,8 +19,8 @@
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.SignUpActivity" />
-        <activity android:name=".StudentHomeActivity" />
-        <activity android:name=".TeacherHomeActivity"></activity>
+        <activity android:name=".Activities.StudentHomeActivity" />
+        <activity android:name=".Activities.TeacherHomeActivity"></activity>
     </application>
 
 </manifest>
