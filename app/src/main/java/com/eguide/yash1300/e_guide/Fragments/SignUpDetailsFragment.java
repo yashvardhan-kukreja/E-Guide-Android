@@ -18,7 +18,7 @@ import android.widget.RadioGroup;
 
 import com.eguide.yash1300.e_guide.Activities.LoginActivity;
 import com.eguide.yash1300.e_guide.Listeners.RegisterListener;
-import com.eguide.yash1300.e_guide.NetworkManager;
+import com.eguide.yash1300.e_guide.Utils.NetworkManager;
 import com.eguide.yash1300.e_guide.R;
 
 @SuppressLint("ValidFragment")

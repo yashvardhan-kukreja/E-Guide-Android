@@ -10,10 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.eguide.yash1300.e_guide.Listeners.LoginResultListener;
-import com.eguide.yash1300.e_guide.NetworkManager;
+import com.eguide.yash1300.e_guide.Utils.NetworkManager;
 import com.eguide.yash1300.e_guide.R;
 
 public class LoginActivity extends AppCompatActivity {
