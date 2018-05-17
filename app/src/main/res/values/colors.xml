@@ -6,4 +6,6 @@
     <color name="grad_start">#2199FF</color>
     <color name="grad_end">#00CAFF</color>
     <color name="dark_blue">#11538b</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#A4A4A4</color>
 </resources>

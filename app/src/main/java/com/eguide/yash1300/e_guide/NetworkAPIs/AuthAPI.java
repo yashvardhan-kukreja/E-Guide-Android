@@ -1,7 +1,7 @@
 package com.eguide.yash1300.e_guide.NetworkAPIs;
 
-import com.eguide.yash1300.e_guide.NetworkModels.BasicResponse;
-import com.eguide.yash1300.e_guide.NetworkModels.LoginResponse;
+import com.eguide.yash1300.e_guide.NetworkResponses.BasicResponse;
+import com.eguide.yash1300.e_guide.NetworkResponses.LoginResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -41,8 +41,7 @@ public interface AuthAPI {
             @Field("username") String username,
             @Field("email") String email,
             @Field("password") String password,
-            @Field("contact") String contact,
-            @Field("skills") String skills
+            @Field("contact") String contact
     );
 
 }

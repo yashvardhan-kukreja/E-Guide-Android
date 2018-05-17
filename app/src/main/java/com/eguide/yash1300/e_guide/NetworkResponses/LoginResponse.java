@@ -1,10 +1,9 @@
-package com.eguide.yash1300.e_guide.NetworkModels;
+package com.eguide.yash1300.e_guide.NetworkResponses;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BasicResponse {
-
+public class LoginResponse {
 
     @SerializedName("success")
     @Expose
@@ -13,6 +12,10 @@ public class BasicResponse {
     @SerializedName("message")
     @Expose
     private String message;
+
+    @SerializedName("token")
+    @Expose
+    private String token;
 
     public Boolean getSuccess() {
         return success;
@@ -30,5 +33,11 @@ public class BasicResponse {
         this.message = message;
     }
 
+    public String getToken() {
+        return token;
+    }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

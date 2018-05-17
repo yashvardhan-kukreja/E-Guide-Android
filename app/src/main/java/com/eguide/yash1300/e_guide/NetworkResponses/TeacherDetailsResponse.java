@@ -1,21 +1,22 @@
-package com.eguide.yash1300.e_guide.NetworkModels;
+package com.eguide.yash1300.e_guide.NetworkResponses;
 
+import com.eguide.yash1300.e_guide.Models.TeacherModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginResponse {
+public class TeacherDetailsResponse {
 
     @SerializedName("success")
     @Expose
-    private Boolean success;
+    Boolean success;
 
     @SerializedName("message")
     @Expose
-    private String message;
+    String message;
 
-    @SerializedName("token")
+    @SerializedName("teacher")
     @Expose
-    private String token;
+    TeacherModel teacher;
 
     public Boolean getSuccess() {
         return success;
@@ -33,11 +34,11 @@ public class LoginResponse {
         this.message = message;
     }
 
-    public String getToken() {
-        return token;
+    public TeacherModel getTeacher() {
+        return teacher;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setTeacher(TeacherModel teacher) {
+        this.teacher = teacher;
     }
 }

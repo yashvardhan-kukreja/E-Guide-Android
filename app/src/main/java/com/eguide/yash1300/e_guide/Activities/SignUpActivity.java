@@ -7,7 +7,6 @@ import android.widget.FrameLayout;
 
 import com.eguide.yash1300.e_guide.Fragments.SignUpDetailsFragment;
 import com.eguide.yash1300.e_guide.Fragments.SignUpSkillsFragment;
-import com.eguide.yash1300.e_guide.Listeners.RegisterDetails2SkillsListener;
 import com.eguide.yash1300.e_guide.R;
 
 public class SignUpActivity extends AppCompatActivity implements RegisterDetails2SkillsListener{

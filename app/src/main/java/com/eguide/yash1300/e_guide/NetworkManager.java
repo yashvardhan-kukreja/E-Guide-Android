@@ -1,15 +1,14 @@
 package com.eguide.yash1300.e_guide;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import com.eguide.yash1300.e_guide.Listeners.LoginResultListener;
-import com.eguide.yash1300.e_guide.Listeners.StudentRegisterListener;
+import com.eguide.yash1300.e_guide.Listeners.RegisterListener;
+import com.eguide.yash1300.e_guide.Listeners.TeacherFetchDetailsListener;
 import com.eguide.yash1300.e_guide.NetworkAPIs.AuthAPI;
 import com.eguide.yash1300.e_guide.NetworkAPIs.StudentAPI;
 import com.eguide.yash1300.e_guide.NetworkAPIs.TeacherAPI;
-import com.eguide.yash1300.e_guide.NetworkModels.BasicResponse;
-import com.eguide.yash1300.e_guide.NetworkModels.LoginResponse;
+import com.eguide.yash1300.e_guide.NetworkResponses.BasicResponse;
+import com.eguide.yash1300.e_guide.NetworkResponses.LoginResponse;
+import com.eguide.yash1300.e_guide.NetworkResponses.TeacherDetailsResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -81,24 +80,68 @@ public class NetworkManager {
         });
     }
 
-    public void studentRegister(String name, String username, String email, String password, String contact, final StudentRegisterListener studentRegisterListener) {
+    public void studentRegister(String name, String username, String email, String password, String contact, final RegisterListener studentRegisterListener) {
         Call<BasicResponse> studentRegisterCall = authAPI.studentRegister(name, username, email, password, contact);
         studentRegisterCall.enqueue(new Callback<BasicResponse>() {
             @Override
             public void onResponse(Call<BasicResponse> call, Response<BasicResponse> response) {
                 Boolean success = response.body().getSuccess();
                 String message = response.body().getMessage();
-                if (!success) {
-                    studentRegisterListener.onFailure(message);
+                if (success) {
+                    studentRegisterListener.onSuccess(message);
                     return;
                 }
-                studentRegisterListener.onSuccess(message);
+                studentRegisterListener.onFailure(message);
             }
 
             @Override
             public void onFailure(Call<BasicResponse> call, Throwable t) {
                 t.printStackTrace();
                 studentRegisterListener.onFailure(GlobalConstants.NETWORK_ERROR);
+            }
+        });
+    }
+
+    public void teacherRegister(String name, String username, String email, String password, String contact, final RegisterListener teacherRegisterListener) {
+        Call<BasicResponse> teacherRegisterCall = authAPI.teacherRegister(name, username, email, password, contact);
+        teacherRegisterCall.enqueue(new Callback<BasicResponse>() {
+            @Override
+            public void onResponse(Call<BasicResponse> call, Response<BasicResponse> response) {
+                Boolean success = response.body().getSuccess();
+                String message = response.body().getMessage();
+                if (success) {
+                    teacherRegisterListener.onSuccess(message);
+                    return;
+                }
+                teacherRegisterListener.onFailure(message);
+            }
+
+            @Override
+            public void onFailure(Call<BasicResponse> call, Throwable t) {
+                t.printStackTrace();
+                teacherRegisterListener.onFailure(GlobalConstants.NETWORK_ERROR);
+            }
+        });
+    }
+
+    public void teacherFetchDetails(String token, final TeacherFetchDetailsListener teacherFetchDetailsListener) {
+        Call<TeacherDetailsResponse> fetchTeacherDetails = teacherAPI.fetchDetails(token);
+        fetchTeacherDetails.enqueue(new Callback<TeacherDetailsResponse>() {
+            @Override
+            public void onResponse(Call<TeacherDetailsResponse> call, Response<TeacherDetailsResponse> response) {
+                Boolean success = response.body().getSuccess();
+                String message = response.body().getMessage();
+                if (success) {
+                    teacherFetchDetailsListener.onSuccess(message, response.body().getTeacher());
+                    return;
+                }
+                teacherFetchDetailsListener.onFailure(message);
+            }
+
+            @Override
+            public void onFailure(Call<TeacherDetailsResponse> call, Throwable t) {
+                t.printStackTrace();
+                teacherFetchDetailsListener.onFailure(GlobalConstants.NETWORK_ERROR);
             }
         });
     }

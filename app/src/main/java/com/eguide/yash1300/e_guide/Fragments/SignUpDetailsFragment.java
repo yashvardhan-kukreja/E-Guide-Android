@@ -17,8 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.eguide.yash1300.e_guide.Activities.LoginActivity;
-import com.eguide.yash1300.e_guide.Listeners.RegisterDetails2SkillsListener;
-import com.eguide.yash1300.e_guide.Listeners.StudentRegisterListener;
+import com.eguide.yash1300.e_guide.Listeners.RegisterListener;
 import com.eguide.yash1300.e_guide.NetworkManager;
 import com.eguide.yash1300.e_guide.R;
 
@@ -87,7 +86,7 @@ public class SignUpDetailsFragment extends Fragment {
                 }
 
                 if (studReg) {
-                    NetworkManager.getInstance().studentRegister(name.getText().toString(), username.getText().toString(), email.getText().toString(), password.getText().toString(), contact.getText().toString(), new StudentRegisterListener() {
+                    NetworkManager.getInstance().studentRegister(name.getText().toString(), username.getText().toString(), email.getText().toString(), password.getText().toString(), contact.getText().toString(), new RegisterListener() {
                         @Override
                         public void onSuccess(String message) {
                             Snackbar.make(parentLayoutView, message, Snackbar.LENGTH_LONG).show();
@@ -100,9 +99,18 @@ public class SignUpDetailsFragment extends Fragment {
                         }
                     });
                 } else {
-                    RegisterDetails2SkillsListener registerDetails2SkillsListener;
-                    registerDetails2SkillsListener = (RegisterDetails2SkillsListener) getActivity();
-                    registerDetails2SkillsListener.sendDetails(name.getText().toString(), username.getText().toString(), email.getText().toString(), password.getText().toString(), contact.getText().toString());
+                    NetworkManager.getInstance().teacherRegister(name.getText().toString(), username.getText().toString(), email.getText().toString(), password.getText().toString(), contact.getText().toString(), new RegisterListener() {
+                        @Override
+                        public void onSuccess(String message) {
+                            Snackbar.make(parentLayoutView, message, Snackbar.LENGTH_LONG).show();
+                            startActivity(new Intent(context, LoginActivity.class));
+                        }
+
+                        @Override
+                        public void onFailure(String message) {
+                            Snackbar.make(parentLayoutView, message, Snackbar.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         });

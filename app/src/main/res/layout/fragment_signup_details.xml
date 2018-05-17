@@ -190,7 +190,7 @@
                 android:paddingLeft="50dp"
                 android:paddingRight="50dp"
                 android:paddingTop="12dp"
-                android:text="Proceed"
+                android:text="Sign up"
                 android:textColor="@color/grad_start"
                 android:textSize="18dp"
                 android:layout_marginTop="25dp"
