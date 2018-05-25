@@ -33,7 +33,7 @@ public class TeacherModel {
 
     @SerializedName("students")
     @Expose
-    List<StudentModel> students;
+    List<FavoriteModel> students;
 
     @SerializedName("skills")
     @Expose
@@ -87,11 +87,11 @@ public class TeacherModel {
         this.contact = contact;
     }
 
-    public List<StudentModel> getStudents() {
+    public List<FavoriteModel> getStudents() {
         return students;
     }
 
-    public void setStudents(List<StudentModel> students) {
+    public void setStudents(List<FavoriteModel> students) {
         this.students = students;
     }
 
