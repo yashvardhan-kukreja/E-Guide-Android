@@ -45,7 +45,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();
                 currentTeacher = teacher;
-                loadFragment(new TeacherHomeFavStudentsFragment());
+                loadFragment(new TeacherHomeFavStudentsFragment(currentTeacher));
             }
 
             @Override
@@ -77,7 +77,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
             public boolean onTabSelected(int position, boolean wasSelected) {
                 switch(position) {
                     case 0:
-                        Fragment favStudentsFragment = new TeacherHomeFavStudentsFragment();
+                        Fragment favStudentsFragment = new TeacherHomeFavStudentsFragment(currentTeacher);
                         loadFragment(favStudentsFragment);
                         break;
                     case 1:

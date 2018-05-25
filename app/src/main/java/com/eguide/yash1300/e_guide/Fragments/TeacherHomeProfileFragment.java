@@ -1,9 +1,11 @@
 package com.eguide.yash1300.e_guide.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.eguide.yash1300.e_guide.Activities.SignUpSkillsActivity;
 import com.eguide.yash1300.e_guide.Models.TeacherModel;
 import com.eguide.yash1300.e_guide.R;
 
@@ -21,6 +24,7 @@ public class TeacherHomeProfileFragment extends Fragment{
     TextView name, email, username, contact, noSkills;
     ListView skillsList;
     TeacherModel teacher;
+    FloatingActionButton addSkillsFAB;
 
     public TeacherHomeProfileFragment(TeacherModel teacher) {
         this.teacher = teacher;
@@ -37,6 +41,7 @@ public class TeacherHomeProfileFragment extends Fragment{
         contact = v.findViewById(R.id.teacher_profile_contact);
         noSkills = v.findViewById(R.id.teacher_profile_no_skills_yet);
         skillsList = v.findViewById(R.id.teacher_profile_skills);
+        addSkillsFAB = v.findViewById(R.id.teacher_profile_add_skills_fab);
 
         name.setText("Name: " + teacher.getName());
         username.setText("Username: " + teacher.getUsername());
@@ -57,6 +62,13 @@ public class TeacherHomeProfileFragment extends Fragment{
             noSkills.setVisibility(View.VISIBLE);
             skillsList.setVisibility(View.GONE);
         }
+
+        addSkillsFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), SignUpSkillsActivity.class));
+            }
+        });
         return v;
     }
 }

@@ -2,6 +2,7 @@ package com.eguide.yash1300.e_guide.Utils;
 
 import com.eguide.yash1300.e_guide.Listeners.LoginResultListener;
 import com.eguide.yash1300.e_guide.Listeners.RegisterListener;
+import com.eguide.yash1300.e_guide.Listeners.TeacherFetchAllSkillsListener;
 import com.eguide.yash1300.e_guide.Listeners.TeacherFetchDetailsListener;
 import com.eguide.yash1300.e_guide.NetworkAPIs.AuthAPI;
 import com.eguide.yash1300.e_guide.NetworkAPIs.StudentAPI;
@@ -9,6 +10,7 @@ import com.eguide.yash1300.e_guide.NetworkAPIs.TeacherAPI;
 import com.eguide.yash1300.e_guide.NetworkResponses.BasicResponse;
 import com.eguide.yash1300.e_guide.NetworkResponses.LoginResponse;
 import com.eguide.yash1300.e_guide.NetworkResponses.TeacherDetailsResponse;
+import com.eguide.yash1300.e_guide.NetworkResponses.TeacherFetchAllSkillsResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -146,4 +148,47 @@ public class NetworkManager {
         });
     }
 
+    public void teacherFetchAllSkills(String token, final TeacherFetchAllSkillsListener teacherFetchAllSkillsListener) {
+        Call<TeacherFetchAllSkillsResponse> fetchAllSkillsResponseCall = teacherAPI.fetchAllSkills(token);
+        fetchAllSkillsResponseCall.enqueue(new Callback<TeacherFetchAllSkillsResponse>() {
+            @Override
+            public void onResponse(Call<TeacherFetchAllSkillsResponse> call, Response<TeacherFetchAllSkillsResponse> response) {
+                Boolean success = response.body().getSuccess();
+                String message = response.body().getMessage();
+                if (success) {
+                    teacherFetchAllSkillsListener.onSuccess(response.body().getSkills());
+                    return;
+                }
+                teacherFetchAllSkillsListener.onFailure(message);
+            }
+
+            @Override
+            public void onFailure(Call<TeacherFetchAllSkillsResponse> call, Throwable t) {
+                t.printStackTrace();
+                teacherFetchAllSkillsListener.onFailure(GlobalConstants.NETWORK_ERROR);
+            }
+        });
+    }
+
+    public void teacherAddSkills(String token, String skill_ids, final RegisterListener registerListener) {
+        Call<BasicResponse> addSkillsCall = teacherAPI.addSkills(token, skill_ids);
+        addSkillsCall.enqueue(new Callback<BasicResponse>() {
+            @Override
+            public void onResponse(Call<BasicResponse> call, Response<BasicResponse> response) {
+                Boolean success = response.body().getSuccess();
+                String message = response.body().getMessage();
+                if (success) {
+                    registerListener.onSuccess(message);
+                } else {
+                    registerListener.onFailure(message);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BasicResponse> call, Throwable t) {
+                t.printStackTrace();
+                registerListener.onFailure(GlobalConstants.NETWORK_ERROR);
+            }
+        });
+    }
 }

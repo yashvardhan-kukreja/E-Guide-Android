@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skill Name"
+            android:textColor="@color/grad_start"
+            android:textSize="18sp"
+            android:id="@+id/adapter_sign_up_skills_skill_name"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/grad_end"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="@color/grad_start"
+            android:id="@+id/adapter_sign_up_skills_checkbox"/>
+
+    </LinearLayout>
+
+</LinearLayout>
