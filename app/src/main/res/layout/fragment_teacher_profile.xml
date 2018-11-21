@@ -11,6 +11,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:background="@color/dark_blue"/>-->
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="#66000000"
+            app:title="About you!"
+            android:layout_marginBottom="10dp"
+            app:titleTextColor="@color/white"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,55 +32,58 @@
             android:textSize="25sp"
             android:textColor="#FFFFFFFF"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            app:cardUseCompatPadding="true">
+            android:padding="16dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name: -"
-                    android:layout_marginTop="10dp"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"
-                    android:id="@+id/teacher_profile_name"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Username: -"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"
-                    android:id="@+id/teacher_profile_username"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="E-mail: -"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"
-                    android:id="@+id/teacher_profile_email"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contact: -"
-                    android:textAlignment="center"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="20sp"
-                    android:id="@+id/teacher_profile_contact"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name: -"
+                        android:textColor="@color/dark_blue"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:id="@+id/teacher_profile_name"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Username: -"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="20sp"
+                        android:id="@+id/teacher_profile_username"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="E-mail: -"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="20sp"
+                        android:id="@+id/teacher_profile_email"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact: -"
+                        android:textColor="@color/dark_blue"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="20sp"
+                        android:id="@+id/teacher_profile_contact"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -81,7 +97,7 @@
             android:textSize="25sp"
             android:textColor="#FFFFFFFF"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             />
 
         <android.support.v7.widget.CardView

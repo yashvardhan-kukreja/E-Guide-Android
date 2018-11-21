@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.SignUpActivity">
+    android:orientation="horizontal"
+    tools:context=".activities.SignUpActivity">
 
-    <View
-        android:id="@+id/signup_top_view"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@drawable/grad_bg"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_anchor="@id/signup_top_view"
-        app:layout_anchorGravity="top|center">
+        android:layout_height="match_parent">
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/grad_bg"/>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:cardCornerRadius="4dp"
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -44,9 +43,11 @@
 
             </LinearLayout>
 
+            </android.support.v4.widget.NestedScrollView>
         </android.support.v7.widget.CardView>
 
-    </LinearLayout>
+
+    </FrameLayout>
 
 
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Would you like to tell us your skills so that the learners can easily find you?"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:layout_marginBottom="20dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_grad"
+            android:text="Yeah Sure!"
+            android:id="@+id/skill_conf_yes"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:padding="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/skill_conf_no"
+            android:background="@drawable/btn_stroke"
+            android:text="I'll do that later"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/grad_start"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:padding="10dp"/>
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

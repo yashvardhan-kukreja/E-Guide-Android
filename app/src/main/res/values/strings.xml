@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">E-Guide</string>
+    <string name="skills_dialog_title"><u>Skillset</u></string>
 </resources>
