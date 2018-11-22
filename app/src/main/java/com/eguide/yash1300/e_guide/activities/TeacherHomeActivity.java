@@ -139,7 +139,6 @@ public class TeacherHomeActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.teacher_main_container, fragment);
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }

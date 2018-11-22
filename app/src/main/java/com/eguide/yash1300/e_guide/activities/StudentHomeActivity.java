@@ -17,12 +17,11 @@ import android.widget.RelativeLayout;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.eguide.yash1300.e_guide.R;
+import com.eguide.yash1300.e_guide.fragments.student.StudentHomeFavTeacherFragment;
 import com.eguide.yash1300.e_guide.fragments.student.StudentHomeSettingsFragment;
 import com.eguide.yash1300.e_guide.fragments.student.StudentHomeAllTeachersFragment;
-import com.eguide.yash1300.e_guide.listeners.student.StudentFetchAllDetailsListener;
 import com.eguide.yash1300.e_guide.listeners.student.StudentFetchFavoriteTeachersListener;
 import com.eguide.yash1300.e_guide.models.FavoriteModel;
-import com.eguide.yash1300.e_guide.models.StudentModel;
 import com.eguide.yash1300.e_guide.models.TeacherModel;
 import com.eguide.yash1300.e_guide.utils.NetworkManager;
 
@@ -79,49 +78,42 @@ public class StudentHomeActivity extends AppCompatActivity {
 
                 AHBottomNavigationItem favorites = new AHBottomNavigationItem("Favorites", R.drawable.ic_people_outline_black_24dp, R.color.white);
                 AHBottomNavigationItem teachers = new AHBottomNavigationItem("Teachers", R.drawable.ic_people_outline_black_24dp, R.color.white);
-                AHBottomNavigationItem profile = new AHBottomNavigationItem("Profile", R.drawable.ic_person_outline_black_24dp, R.color.white);
+                //AHBottomNavigationItem profile = new AHBottomNavigationItem("Profile", R.drawable.ic_person_outline_black_24dp, R.color.white);
                 AHBottomNavigationItem settings = new AHBottomNavigationItem("Settings", R.drawable.ic_settings_black_24dp, R.color.white);
 
                 ahBottomNavigation.addItem(favorites);
                 ahBottomNavigation.addItem(teachers);
-                ahBottomNavigation.addItem(profile);
+                //ahBottomNavigation.addItem(profile);
                 ahBottomNavigation.addItem(settings);
 
                 ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
                 ahBottomNavigation.setInactiveColor(Color.parseColor("#A4A4A4"));
                 ahBottomNavigation.setAccentColor(Color.parseColor("#00CAFF"));
 
-                ahBottomNavigation.setCurrentItem(2);
-
-                final List<TeacherModel> favoriteTeachers = new ArrayList<>();
-                for (FavoriteModel favoritesModels: favTeachers)
-                    favoriteTeachers.add(favoritesModels.getTeacher());
-
                 ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
                     @Override
                     public boolean onTabSelected(int position, boolean wasSelected) {
                         switch (position) {
                             case 0:
-                                Fragment fragment = new StudentHomeAllTeachersFragment(StudentHomeActivity.this, favoriteTeachers, token);
+                                Fragment fragment = new StudentHomeFavTeacherFragment(StudentHomeActivity.this, token);
                                 loadFragment(fragment);
                                 break;
                             case 1:
-                                Fragment fragment1 = new StudentHomeAllTeachersFragment(StudentHomeActivity.this, favoriteTeachers, token);
+                                Fragment fragment1 = new StudentHomeAllTeachersFragment(StudentHomeActivity.this, token);
                                 loadFragment(fragment1);
                                 break;
                             case 2:
-                                break;
-                            case 3:
-                                Fragment fragment3 = new StudentHomeSettingsFragment(StudentHomeActivity.this);
-                                loadFragment(fragment3);
+                                Fragment fragment2 = new StudentHomeSettingsFragment(StudentHomeActivity.this);
+                                loadFragment(fragment2);
                                 break;
                             default:
                                 break;
 
                         }
-                        return false;
+                        return true;
                     }
                 });
+                ahBottomNavigation.setCurrentItem(1);
             }
 
             @Override
@@ -143,7 +135,7 @@ public class StudentHomeActivity extends AppCompatActivity {
     public void loadFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.student_main_container, fragment);
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fragmentTransaction.commit();
 
     }

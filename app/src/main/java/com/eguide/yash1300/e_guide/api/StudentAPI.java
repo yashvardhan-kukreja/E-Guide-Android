@@ -6,6 +6,7 @@ import com.eguide.yash1300.e_guide.responses.student.StudentFetchFavoriteTeacher
 import com.eguide.yash1300.e_guide.responses.student.StudentFetchTeachersResponse;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -24,6 +25,12 @@ public interface StudentAPI {
             @Header("x-access-token") String token
     );
 
+
+    @GET("favoriteTeachers")
+    Call<StudentFetchFavoriteTeachersResponse> fetchFavTeachers(
+            @Header("x-access-token") String token
+    );
+
     @POST("favorTeacher")
     @FormUrlEncoded
     Call<BasicResponse> favorTeacher(
@@ -32,8 +39,11 @@ public interface StudentAPI {
             @Field("teacher_id") String teacherId
     );
 
-    @GET("favoriteTeachers")
-    Call<StudentFetchFavoriteTeachersResponse> fetchFavTeachers(
-            @Header("x-access-token") String token
+    @POST("unfavorTeacher")
+    @FormUrlEncoded
+    Call<BasicResponse> unfavorTeacher(
+            @Header("x-access-token") String token,
+            @Field("teacher_id") String teacherId,
+            @Field("skill_id") String skillId
     );
 }

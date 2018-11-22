@@ -7,6 +7,7 @@ import com.eguide.yash1300.e_guide.listeners.student.StudentFavorTeacherListener
 import com.eguide.yash1300.e_guide.listeners.student.StudentFetchAllDetailsListener;
 import com.eguide.yash1300.e_guide.listeners.student.StudentFetchAllTeachersListener;
 import com.eguide.yash1300.e_guide.listeners.student.StudentFetchFavoriteTeachersListener;
+import com.eguide.yash1300.e_guide.listeners.student.StudentUnfavorTeacherListener;
 import com.eguide.yash1300.e_guide.listeners.teacher.TeacherCheckListener;
 import com.eguide.yash1300.e_guide.listeners.teacher.TeacherFetchAllSkillsListener;
 import com.eguide.yash1300.e_guide.listeners.teacher.TeacherFetchDetailsListener;
@@ -366,6 +367,28 @@ public class NetworkManager {
             public void onFailure(Call<StudentFetchFavoriteTeachersResponse> call, Throwable t) {
                 t.printStackTrace();
                 studentFetchFavoriteTeachersListener.onFailure(GlobalConstants.NETWORK_ERROR);
+            }
+        });
+    }
+
+    public void unfavorTeacher(String token, String teacherId, String skillId, final StudentUnfavorTeacherListener studentUnfavorTeacherListener) {
+        Call<BasicResponse> unfavorTeacherCall = studentAPI.unfavorTeacher(token, teacherId, skillId);
+        unfavorTeacherCall.enqueue(new Callback<BasicResponse>() {
+            @Override
+            public void onResponse(Call<BasicResponse> call, Response<BasicResponse> response) {
+                Boolean success = response.body().getSuccess();
+                String message = response.body().getMessage();
+                if (success) {
+                    studentUnfavorTeacherListener.onSuccess(message);
+                    return;
+                }
+                studentUnfavorTeacherListener.onFailure(message);
+            }
+
+            @Override
+            public void onFailure(Call<BasicResponse> call, Throwable t) {
+                t.printStackTrace();
+                studentUnfavorTeacherListener.onFailure(GlobalConstants.NETWORK_ERROR);
             }
         });
     }

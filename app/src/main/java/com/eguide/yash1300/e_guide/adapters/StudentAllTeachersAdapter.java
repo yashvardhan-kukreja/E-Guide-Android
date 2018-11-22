@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,11 +47,10 @@ public class StudentAllTeachersAdapter extends RecyclerView.Adapter<StudentAllTe
         StringBuilder skillBuilder = new StringBuilder();
 
         for (SkillModel skill: skills)
-            skillBuilder.append("- " + skill.getName() + "\n");
-
+            skillBuilder.append("\n- " + skill.getName());
         holder.name.setText(name);
         holder.skill.setText(skillBuilder.toString());
-        holder.email.setText(email);
+        holder.email.setText("\n" + email);
         holder.contact.setText(contact);
 
 
@@ -64,9 +62,6 @@ public class StudentAllTeachersAdapter extends RecyclerView.Adapter<StudentAllTe
 
         builder.setView(dialogView);
         final AlertDialog dialog = builder.create();
-
-
-
         holder.favorTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

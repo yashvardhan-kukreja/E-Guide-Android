@@ -23,4 +23,16 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:fontFamily">@font/dinpro_medium</item>
     </style>
+
+    <style name="StudentTeachersListEditTextTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/grad_end</item>
+        <item name="colorPrimaryDark">@color/grad_start</item>
+        <item name="colorAccent">#FFFFFF</item>
+        <item name="android:statusBarColor">@color/dark_blue</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:fontFamily">@font/dinpro_medium</item>
+    </style>
+
+
 </resources>

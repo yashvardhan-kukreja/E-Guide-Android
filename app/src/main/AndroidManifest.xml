@@ -21,7 +21,7 @@
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.SignUpActivity" />
-        <activity android:name=".activities.StudentHomeActivity" />
+        <activity android:name=".activities.StudentHomeActivity" android:theme="@style/TeacherHomeTheme" />
         <activity android:name=".activities.TeacherHomeActivity" android:theme="@style/TeacherHomeTheme" />
     </application>
 

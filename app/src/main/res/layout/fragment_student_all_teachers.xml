@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/grad_bg">
 
 
@@ -33,6 +34,14 @@
         android:orientation="vertical">
 
 
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="#66000000"
+            app:title="All the teachers and mentors!"
+            android:layout_marginBottom="10dp"
+            app:titleTextColor="@color/white"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,10 +52,11 @@
             android:textColor="#FFFFFFFF"
             android:drawableLeft="@drawable/ic_search_black_24dp"
             android:drawableTint="#FFFFFF"
+            android:shadowColor="#FFFFFF"
             android:drawablePadding="10dp"
             android:layout_gravity="center"
             android:id="@+id/search_bar_skill"
-
+            android:theme="@style/StudentTeachersListEditTextTheme"
             android:backgroundTint="#FFFFFF"
             android:foregroundTint="#FFFFFF"/>
 

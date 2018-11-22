@@ -11,11 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="#66000000"
-        app:title="Students who favored you"
-        app:titleTextColor="@color/white">
-
-
-    </android.support.v7.widget.Toolbar>
+        app:title="Students who favored you!"
+        app:titleTextColor="@color/white"/>
 
     <FrameLayout
         android:layout_width="match_parent"

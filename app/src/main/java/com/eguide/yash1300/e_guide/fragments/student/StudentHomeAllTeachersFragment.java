@@ -36,12 +36,10 @@ public class StudentHomeAllTeachersFragment extends Fragment {
     LinearLayout noTeachersFound;
 
     Context context;
-    List<TeacherModel> favTeachersList;
     String token;
 
-    public StudentHomeAllTeachersFragment(Context context, List<TeacherModel> favTeachersList, String token) {
+    public StudentHomeAllTeachersFragment(Context context, String token) {
         this.context = context;
-        this.favTeachersList = favTeachersList;
         this.token = token;
 
     }
@@ -149,11 +147,11 @@ public class StudentHomeAllTeachersFragment extends Fragment {
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        if (s.toString().equals(null) || s.toString().equals("")) {
-                            List<TeacherModel> slicedTeachers = new ArrayList<>();
+                        List<TeacherModel> slicedTeachers = new ArrayList<>();
+                        if (!(s.toString().equals(null) || s.toString().equals(""))) {
                             for (TeacherModel teacher : teachers) {
                                 for (SkillModel skill : teacher.getSkills()) {
-                                    if (skill.getName().contains(s))
+                                    if (skill.getName().toLowerCase().contains(s.toString().toLowerCase()))
                                         slicedTeachers.add(teacher);
                                 }
                             }
