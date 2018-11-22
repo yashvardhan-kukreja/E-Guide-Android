@@ -2,6 +2,8 @@ package com.eguide.yash1300.e_guide.api;
 
 import com.eguide.yash1300.e_guide.responses.BasicResponse;
 import com.eguide.yash1300.e_guide.responses.teacher.TeacherDetailsResponse;
+import com.eguide.yash1300.e_guide.responses.teacher.TeacherFetchFavoredStudentsResponse;
+
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -22,6 +24,11 @@ public interface TeacherAPI {
     Call<BasicResponse> addSkills(
             @Header("x-access-token") String token,
             @Field("skills") String[] skills
+    );
+
+    @GET("fetchFavStudents")
+    Call<TeacherFetchFavoredStudentsResponse>  fetchFavoredStudents(
+            @Header("x-access-token") String token
     );
 
 }

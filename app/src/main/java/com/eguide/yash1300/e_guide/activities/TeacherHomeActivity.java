@@ -54,7 +54,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("loginCache", Context.MODE_PRIVATE);
-        String token = sharedPreferences.getString("token", "");
+        final String token = sharedPreferences.getString("token", "");
 
 
         final AHBottomNavigation ahBottomNavigation = findViewById(R.id.teacher_nav_bar);
@@ -77,7 +77,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
             public boolean onTabSelected(int position, boolean wasSelected) {
                 switch(position) {
                     case 0:
-                        Fragment favStudentsFragment = new TeacherHomeFavStudentsFragment(currentTeacher);
+                        Fragment favStudentsFragment = new TeacherHomeFavStudentsFragment(TeacherHomeActivity.this, token);
                         loadFragment(favStudentsFragment);
                         break;
                     case 1:

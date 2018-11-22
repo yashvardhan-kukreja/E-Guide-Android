@@ -31,10 +31,6 @@ public class StudentModel {
     @Expose
     String contact;
 
-    @SerializedName("favTeachers")
-    @Expose
-    List<FavoriteModel> favouriteTeachers;
-
     public String getId() {
         return id;
     }
@@ -83,11 +79,4 @@ public class StudentModel {
         this.contact = contact;
     }
 
-    public List<FavoriteModel> getFavouriteTeachers() {
-        return favouriteTeachers;
-    }
-
-    public void setFavouriteTeachers(List<FavoriteModel> favouriteTeachers) {
-        this.favouriteTeachers = favouriteTeachers;
-    }
 }

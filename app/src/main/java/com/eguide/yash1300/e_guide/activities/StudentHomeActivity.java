@@ -20,6 +20,7 @@ import com.eguide.yash1300.e_guide.R;
 import com.eguide.yash1300.e_guide.fragments.student.StudentHomeSettingsFragment;
 import com.eguide.yash1300.e_guide.fragments.student.StudentHomeAllTeachersFragment;
 import com.eguide.yash1300.e_guide.listeners.student.StudentFetchAllDetailsListener;
+import com.eguide.yash1300.e_guide.listeners.student.StudentFetchFavoriteTeachersListener;
 import com.eguide.yash1300.e_guide.models.FavoriteModel;
 import com.eguide.yash1300.e_guide.models.StudentModel;
 import com.eguide.yash1300.e_guide.models.TeacherModel;
@@ -64,9 +65,9 @@ public class StudentHomeActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        NetworkManager.getInstance().studentFetchAllDetails(token, new StudentFetchAllDetailsListener() {
+        NetworkManager.getInstance().studentFetchFavoriteTeachers(token, new StudentFetchFavoriteTeachersListener() {
             @Override
-            public void onSuccess(String message, final StudentModel student) {
+            public void onSuccess(String message, List<FavoriteModel> favTeachers) {
 
                 noConnection.setVisibility(View.GONE);
                 yesConnection.setVisibility(View.VISIBLE);
@@ -93,7 +94,7 @@ public class StudentHomeActivity extends AppCompatActivity {
                 ahBottomNavigation.setCurrentItem(2);
 
                 final List<TeacherModel> favoriteTeachers = new ArrayList<>();
-                for (FavoriteModel favoritesModels: student.getFavouriteTeachers())
+                for (FavoriteModel favoritesModels: favTeachers)
                     favoriteTeachers.add(favoritesModels.getTeacher());
 
                 ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
@@ -101,11 +102,11 @@ public class StudentHomeActivity extends AppCompatActivity {
                     public boolean onTabSelected(int position, boolean wasSelected) {
                         switch (position) {
                             case 0:
-                                Fragment fragment = new StudentHomeAllTeachersFragment(StudentHomeActivity.this, favoriteTeachers, token, true);
+                                Fragment fragment = new StudentHomeAllTeachersFragment(StudentHomeActivity.this, favoriteTeachers, token);
                                 loadFragment(fragment);
                                 break;
                             case 1:
-                                Fragment fragment1 = new StudentHomeAllTeachersFragment(StudentHomeActivity.this, favoriteTeachers, token, false);
+                                Fragment fragment1 = new StudentHomeAllTeachersFragment(StudentHomeActivity.this, favoriteTeachers, token);
                                 loadFragment(fragment1);
                                 break;
                             case 2:
@@ -137,8 +138,6 @@ public class StudentHomeActivity extends AppCompatActivity {
                 Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();
             }
         });
-
-
     }
 
     public void loadFragment(Fragment fragment) {

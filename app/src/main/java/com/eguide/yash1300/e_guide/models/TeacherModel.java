@@ -31,10 +31,6 @@ public class TeacherModel {
     @Expose
     String contact;
 
-    @SerializedName("students")
-    @Expose
-    List<FavoriteModel> students;
-
     @SerializedName("skills")
     @Expose
     List<SkillModel> skills;
@@ -85,14 +81,6 @@ public class TeacherModel {
 
     public void setContact(String contact) {
         this.contact = contact;
-    }
-
-    public List<FavoriteModel> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<FavoriteModel> students) {
-        this.students = students;
     }
 
     public List<SkillModel> getSkills() {

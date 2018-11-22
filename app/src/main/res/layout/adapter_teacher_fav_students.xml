@@ -14,40 +14,59 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:paddingBottom="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Name"
-                android:textColor="#000000"
-                android:id="@+id/adapter_fav_student_name"
-                android:layout_marginBottom="5dp"
-                android:textSize="25sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Skill"
-                android:textSize="20sp"
-                android:layout_marginBottom="2dp"
-                android:id="@+id/adapter_fav_student_skill"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="E-mail: "
-                android:textSize="17sp"
-                android:id="@+id/adapter_fav_student_email"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contact: "
-                android:textSize="17sp"
-                android:id="@+id/adapter_fav_student_contact"/>
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_weight="1"
+                android:paddingBottom="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/dark_blue"
+                    android:id="@+id/adapter_fav_student_name"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="23sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Skill"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_blue"
+                    android:layout_marginBottom="2dp"
+                    android:id="@+id/adapter_fav_student_skill"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail: "
+                    android:textSize="16sp"
+                    android:id="@+id/adapter_fav_student_email"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact: "
+                    android:textSize="16sp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/adapter_fav_student_contact"/>
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginRight="15dp"
+                android:tint="@color/grad_end"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_school_black_24dp" />
+
 
         </LinearLayout>
 

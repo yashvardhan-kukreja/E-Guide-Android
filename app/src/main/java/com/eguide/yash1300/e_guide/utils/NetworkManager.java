@@ -6,6 +6,7 @@ import com.eguide.yash1300.e_guide.listeners.RegisterListener;
 import com.eguide.yash1300.e_guide.listeners.student.StudentFavorTeacherListener;
 import com.eguide.yash1300.e_guide.listeners.student.StudentFetchAllDetailsListener;
 import com.eguide.yash1300.e_guide.listeners.student.StudentFetchAllTeachersListener;
+import com.eguide.yash1300.e_guide.listeners.student.StudentFetchFavoriteTeachersListener;
 import com.eguide.yash1300.e_guide.listeners.teacher.TeacherCheckListener;
 import com.eguide.yash1300.e_guide.listeners.teacher.TeacherFetchAllSkillsListener;
 import com.eguide.yash1300.e_guide.listeners.teacher.TeacherFetchDetailsListener;
@@ -17,9 +18,12 @@ import com.eguide.yash1300.e_guide.models.TeacherModel;
 import com.eguide.yash1300.e_guide.responses.BasicResponse;
 import com.eguide.yash1300.e_guide.responses.LoginResponse;
 import com.eguide.yash1300.e_guide.responses.student.StudentDetailsResponse;
+import com.eguide.yash1300.e_guide.responses.student.StudentFetchFavoriteTeachersResponse;
 import com.eguide.yash1300.e_guide.responses.student.StudentFetchTeachersResponse;
 import com.eguide.yash1300.e_guide.responses.teacher.TeacherDetailsResponse;
 import com.eguide.yash1300.e_guide.responses.teacher.TeacherFetchAllSkillsResponse;
+import com.eguide.yash1300.e_guide.listeners.teacher.TeacherFetchFavoredStudentsListener;
+import com.eguide.yash1300.e_guide.responses.teacher.TeacherFetchFavoredStudentsResponse;
 
 import java.util.List;
 
@@ -253,6 +257,28 @@ public class NetworkManager {
         });
     }
 
+    public void fetchTeacherFavoredStudents(String token, final TeacherFetchFavoredStudentsListener teacherFetchFavoredStudentsListener) {
+        Call<TeacherFetchFavoredStudentsResponse> fetchFavoredStudentsResponseCall = teacherAPI.fetchFavoredStudents(token);
+        fetchFavoredStudentsResponseCall.enqueue(new Callback<TeacherFetchFavoredStudentsResponse>() {
+            @Override
+            public void onResponse(Call<TeacherFetchFavoredStudentsResponse> call, Response<TeacherFetchFavoredStudentsResponse> response) {
+                Boolean success = response.body().getSuccess();
+                String message = response.body().getMessage();
+                if (success) {
+                    teacherFetchFavoredStudentsListener.onSuccess(message, response.body().getFavStudents());
+                    return;
+                }
+                teacherFetchFavoredStudentsListener.onFailure(message);
+            }
+
+            @Override
+            public void onFailure(Call<TeacherFetchFavoredStudentsResponse> call, Throwable t) {
+                t.printStackTrace();
+                teacherFetchFavoredStudentsListener.onFailure(GlobalConstants.NETWORK_ERROR);
+            }
+        });
+    }
+
     // Student related API calls
     public void studentFetchAllDetails(String token, final StudentFetchAllDetailsListener studentFetchAllDetailsListener) {
         final Call<StudentDetailsResponse> studentDetailsResponseCall = studentAPI.fetchStudentDetails(token);
@@ -318,6 +344,28 @@ public class NetworkManager {
             public void onFailure(Call<BasicResponse> call, Throwable t) {
                 t.printStackTrace();
                 studentFavorTeacherListener.onFailure(GlobalConstants.NETWORK_ERROR);
+            }
+        });
+    }
+
+    public void studentFetchFavoriteTeachers(String token, final StudentFetchFavoriteTeachersListener studentFetchFavoriteTeachersListener) {
+        Call<StudentFetchFavoriteTeachersResponse> fetchFavoriteTeachersResponseCall = studentAPI.fetchFavTeachers(token);
+        fetchFavoriteTeachersResponseCall.enqueue(new Callback<StudentFetchFavoriteTeachersResponse>() {
+            @Override
+            public void onResponse(Call<StudentFetchFavoriteTeachersResponse> call, Response<StudentFetchFavoriteTeachersResponse> response) {
+                Boolean success = response.body().getSuccess();
+                String message = response.body().getMessage();
+                if (success) {
+                    studentFetchFavoriteTeachersListener.onSuccess(message, response.body().getFavTeachers());
+                    return;
+                }
+                studentFetchFavoriteTeachersListener.onFailure(message);
+            }
+
+            @Override
+            public void onFailure(Call<StudentFetchFavoriteTeachersResponse> call, Throwable t) {
+                t.printStackTrace();
+                studentFetchFavoriteTeachersListener.onFailure(GlobalConstants.NETWORK_ERROR);
             }
         });
     }

@@ -2,6 +2,7 @@ package com.eguide.yash1300.e_guide.api;
 
 import com.eguide.yash1300.e_guide.responses.BasicResponse;
 import com.eguide.yash1300.e_guide.responses.student.StudentDetailsResponse;
+import com.eguide.yash1300.e_guide.responses.student.StudentFetchFavoriteTeachersResponse;
 import com.eguide.yash1300.e_guide.responses.student.StudentFetchTeachersResponse;
 
 import retrofit2.Call;
@@ -13,21 +14,26 @@ import retrofit2.http.POST;
 
 public interface StudentAPI {
 
-    @GET
+    @GET("fetchDetails")
     Call<StudentDetailsResponse> fetchStudentDetails(
             @Header("x-access-token") String token
     );
 
-    @GET
+    @GET("teachers")
     Call<StudentFetchTeachersResponse> fetchAllTeachers(
             @Header("x-access-token") String token
     );
 
-    @POST
+    @POST("favorTeacher")
     @FormUrlEncoded
     Call<BasicResponse> favorTeacher(
             @Header("x-access-token") String token,
             @Field("skill_id") String skillId,
             @Field("teacher_id") String teacherId
+    );
+
+    @GET("favoriteTeachers")
+    Call<StudentFetchFavoriteTeachersResponse> fetchFavTeachers(
+            @Header("x-access-token") String token
     );
 }
