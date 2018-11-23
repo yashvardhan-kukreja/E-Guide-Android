@@ -1,7 +1,6 @@
 package com.eguide.yash1300.e_guide.fragments.student;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,16 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.eguide.yash1300.e_guide.R;
-import com.eguide.yash1300.e_guide.adapters.StudentAllTeachersAdapter;
 import com.eguide.yash1300.e_guide.adapters.StudentsFavoriteTeachersAdapter;
-import com.eguide.yash1300.e_guide.listeners.student.StudentFetchAllTeachersListener;
 import com.eguide.yash1300.e_guide.listeners.student.StudentFetchFavoriteTeachersListener;
 import com.eguide.yash1300.e_guide.models.FavoriteModel;
-import com.eguide.yash1300.e_guide.models.SkillModel;
-import com.eguide.yash1300.e_guide.models.TeacherModel;
 import com.eguide.yash1300.e_guide.utils.NetworkManager;
 
 import java.util.ArrayList;

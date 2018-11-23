@@ -38,15 +38,15 @@ public class NetworkManager {
 
     private static NetworkManager networkManager = null;
 
-    Retrofit authBuilder = new Retrofit.Builder().baseUrl(GlobalConstants.BASE_URL_AUTH).addConverterFactory(GsonConverterFactory.create()).build();
-    Retrofit studentBuilder = new Retrofit.Builder().baseUrl(GlobalConstants.BASE_URL_STUDENT).addConverterFactory(GsonConverterFactory.create()).build();
-    Retrofit teacherBuilder = new Retrofit.Builder().baseUrl(GlobalConstants.BASE_URL_TEACHER).addConverterFactory(GsonConverterFactory.create()).build();
-    Retrofit untokenTeacherBuilder = new Retrofit.Builder().baseUrl(GlobalConstants.BASE_URL_TEACHER_UNTOKEN).addConverterFactory(GsonConverterFactory.create()).build();
+    private Retrofit authBuilder = new Retrofit.Builder().baseUrl(GlobalConstants.BASE_URL_AUTH).addConverterFactory(GsonConverterFactory.create()).build();
+    private Retrofit studentBuilder = new Retrofit.Builder().baseUrl(GlobalConstants.BASE_URL_STUDENT).addConverterFactory(GsonConverterFactory.create()).build();
+    private Retrofit teacherBuilder = new Retrofit.Builder().baseUrl(GlobalConstants.BASE_URL_TEACHER).addConverterFactory(GsonConverterFactory.create()).build();
+    private Retrofit untokenTeacherBuilder = new Retrofit.Builder().baseUrl(GlobalConstants.BASE_URL_TEACHER_UNTOKEN).addConverterFactory(GsonConverterFactory.create()).build();
 
-    AuthAPI authAPI = authBuilder.create(AuthAPI.class);
-    StudentAPI studentAPI = studentBuilder.create(StudentAPI.class);
-    TeacherAPI teacherAPI = teacherBuilder.create(TeacherAPI.class);
-    UntokenTeacherAPI untokenTeacherAPI = untokenTeacherBuilder.create(UntokenTeacherAPI.class);
+    private AuthAPI authAPI = authBuilder.create(AuthAPI.class);
+    private StudentAPI studentAPI = studentBuilder.create(StudentAPI.class);
+    private TeacherAPI teacherAPI = teacherBuilder.create(TeacherAPI.class);
+    private UntokenTeacherAPI untokenTeacherAPI = untokenTeacherBuilder.create(UntokenTeacherAPI.class);
 
     public static NetworkManager getInstance() {
         if (networkManager == null)
