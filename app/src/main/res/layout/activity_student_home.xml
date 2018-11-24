@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/grad_bg"
-        android:id="@+id/no_connection_student_home"
-        android:layout_marginBottom = "?android:attr/actionBarSize">
+        android:id="@+id/no_connection_student_home">
 
 
         <LinearLayout

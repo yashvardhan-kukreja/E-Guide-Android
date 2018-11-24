@@ -148,10 +148,11 @@ public class StudentHomeAllTeachersFragment extends Fragment {
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         List<TeacherModel> slicedTeachers = new ArrayList<>();
+                        System.out.println("on Text changed" + s.toString());
                         if (!(s.toString().equals(null) || s.toString().equals(""))) {
                             for (TeacherModel teacher : teachers) {
                                 for (SkillModel skill : teacher.getSkills()) {
-                                    if (skill.getName().toLowerCase().contains(s.toString().toLowerCase()))
+                                    if (skill.getName().toLowerCase().contains(s.toString().toLowerCase()) && !slicedTeachers.contains(teacher))
                                         slicedTeachers.add(teacher);
                                 }
                             }

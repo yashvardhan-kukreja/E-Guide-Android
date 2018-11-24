@@ -13,6 +13,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +78,26 @@ public class SignUpDetailsFragment extends Fragment {
         conpassword = v.findViewById(R.id.signup_conpassword);
         contact = v.findViewById(R.id.signup_contact);
         proceed = v.findViewById(R.id.btn_signup_proceed);
+
+        contact.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length()>13){
+                    contact.setText(s.subSequence(0,13).toString());
+                    contact.setSelection(13);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         signupRadioGroup = v.findViewById(R.id.signup_radio_group);
 

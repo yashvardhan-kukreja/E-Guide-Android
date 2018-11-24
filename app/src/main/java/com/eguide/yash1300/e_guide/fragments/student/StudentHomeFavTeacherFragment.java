@@ -79,7 +79,7 @@ public class StudentHomeFavTeacherFragment extends Fragment {
                         List<FavoriteModel> slicedTeachers = new ArrayList<>();
                         if (!(s.toString().equals(null) || s.toString().equals(""))) {
                             for (FavoriteModel teacher : favTeachers) {
-                                if (teacher.getSkill().getName().toLowerCase().contains(s.toString().toLowerCase()))
+                                if (teacher.getSkill().getName().toLowerCase().contains(s.toString().toLowerCase()) && !slicedTeachers.contains(teacher))
                                     slicedTeachers.add(teacher);
                             }
                             if (slicedTeachers == null || slicedTeachers.size() == 0) {
@@ -97,8 +97,6 @@ public class StudentHomeFavTeacherFragment extends Fragment {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        if (s.toString().equals(null) || s.toString().equals(""))
-                            teacherRecyclerView.setAdapter(new StudentsFavoriteTeachersAdapter(context, favTeachers, token));
 
                     }
                 });
